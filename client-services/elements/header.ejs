@@ -1,0 +1,56 @@
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+        <!-- Navbar header left -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <!-- Now this part is for small view (phone or small screen... etc) -->
+                <span class="sr-only"> Toggle navigation </span>
+                <!-- Part of span appearence -->
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <!-- Setting brand name -->
+            <a class="navbar-brand" href="#"><h1 class="logo-title"><%= page_header.logo_title %><h1></a>
+        </div>
+        <!-- Navbar header right -->
+        <div id="navbar" class="navbar-collapse collapse" aria-expanded="false" style="height:1px;">
+            <ul class="nav navbar-nav">
+                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><%= page_header.about %><span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/intro"><%= page_header.about_intro %></a></li>
+                        <li><a href="/founders"><%= page_header.about_founders %></a></li>
+                        <li><a href="/partnership"><%= page_header.about_partnership %></a></li>
+                    </ul>
+                </li>
+                <!-- <li><a data-toggle="modal" data-target=".signin-modal"></a></li> -->
+                <li><a href="/news"><%= page_header.news %></a></li>
+                <li><a href="/support"><%= page_header.support %></a></li>
+                <li><a href="/app"><%= page_header.app %></a></li>
+                <li><a href="/join"><%= page_header.join %></a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-user"></span><%= page_header.signup %></a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-log-in"></span><%= page_header.login %></a></li>
+                <li><a data-toggle="modal" data-target=".signin-modal"><span class="glyphicon glyphicon-chevron-down"></span><%= page_header.lang %></a></li>
+            </ul>
+        </div> <!-- header right end -->
+    </div><!-- nav container end -->
+</nav>
+
+<!-- modal here -->
+<div class="modal fade signin-modal in" tabindex="-1" role="dialog" aria-labelledby="devSmallModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">x</span> </button>
+            <h4 class="modal-title" id="devSmallModalLabel"><%= page_header.lang_choose %></h4>
+        </div>
+        <div class="modal-body" style="text-align: center;">
+            <% for(var index in page_header.lang_detail){ %>
+                <a href="/?lang=<%= page_header.lang_detail[index].href %>" class="btn btn-lg btn-block btn-social">
+                    <i class="glyphicon glyphicon-ok-sign">
+                    </i>
+                    <%= page_header.lang_detail[index].name %>
+                </a>
+            <% } %>
+        </div>
+    </div>
+</div>
