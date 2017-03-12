@@ -11,7 +11,7 @@ const jsfs = require('jsonfile');
 app.set('views',path.join(__dirname,'client-services/views'));
 /* Setting static directory - image use */
 app.use(express.static('client-services/css'));
-app.use(express.static('client-services/data'));
+app.use(express.static('client-services/config'));
 app.use(express.static('client-services/fonts'));
 app.use(express.static('client-services/img'));
 app.use(express.static('client-services/js'));
@@ -26,6 +26,7 @@ const server = require('http').createServer(app);
 
 app.get("/",function(req,res){
     var lang = "";
+    // Parsing the url , get the setting params
     var params = url.parse(req.url , true);
     if(params.query.lang == undefined){
         lang = "zh_TW";
@@ -33,6 +34,8 @@ app.get("/",function(req,res){
     else{
         lang = params.query.lang;
     }
+    // Fetch link support
+    var link_support = jsfs.readFileSync(__dirname+'/client-services/config/link.json');
     // Fetch language support (in header.ejs)
     var lang_support_header = jsfs.readFileSync(__dirname+'/client-services/translation/'+lang+'/header.json');
     // Fetch Language support (text support)
@@ -42,7 +45,8 @@ app.get("/",function(req,res){
     res.render('index',{
         title: "FIN-LINK, your best choice of fintech.",
         page_header: lang_support_header,
-        index_content: lang_support_text
+        index_content: lang_support_text,
+        link: link_support
     });
 });
 
