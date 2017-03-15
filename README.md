@@ -1,7 +1,9 @@
 # UIDD-FinTech
 
 * This project is developed for NCKU-EE course UIDD.
-* Developer: Yung-Sheng Lu (NCKU-CSIE)
+* Developer:
+    * Yung-Sheng Lu (NCKU-CSIE)
+    * Kevin Cyu (NCKU-CSIE)
 * Designer: Jenna Chen (NCKU-ID)
 * Copyrights &copy; 2017 NCKU-EE UIDD. All rights reserved.
 
@@ -11,9 +13,9 @@
 # Build
 $ npm install
 # Start
-$ node server.js
+$ npm run start
 # All
-$ npm run build && npm run start
+$ npm run all
 ```
 
 ## Dependencies
@@ -35,3 +37,4 @@ $ npm run build && npm run start
 ## TODO
 
 * Visualization
+* Socket.IO utilization
