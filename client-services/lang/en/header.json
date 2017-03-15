@@ -1,0 +1,22 @@
+{
+    "brand": "FIN-LINK",
+    "about": "About",
+    "about_intro": "What is FinTech?",
+    "about_founders": "Founder List",
+    "about_partnership": "Partnership",
+    "news": "News",
+    "supp": "Support",
+    "app": "App",
+    "join": "Join",
+    "signup": "Sign up",
+    "login": "Log in",
+    "lang": "Language",
+    "lang_choose": "Language",
+    "lang_detail": [{
+        "name": "English",
+        "href": "en"
+    }, {
+        "name": "Traditional Chinese",
+        "href": "zh-TW"
+    }]
+}

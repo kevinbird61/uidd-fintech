@@ -1,6 +1,6 @@
 {
-    "fb": "/fb",
-    "linkin": "/linkin",
-    "twitter": "/twitter",
-    "youtube": "/youtube"
+	"facebook": "/facebook",
+	"linkedin": "/linkedin",
+	"twitter": "/twitter",
+	"youtube": "/youtube"
 }

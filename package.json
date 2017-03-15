@@ -1,27 +1,27 @@
 {
-    "name": "uuid-fintech",
-    "main": "server.js",
-    "config":  {
-        "portiorender": 3000
-    },
-    "scripts": {
-        "build": "npm install",
-        "start": "node server.js",
-        "all": "npm run build && npm run start"
-    },
-    "license": "GPL-3.0",
-    "repository":{
-        "type": "git",
-        "url": ""
-    },
-    "dependencies": {
-        "body-parser": "^1.15.2",
-        "express": "^4.6.1",
+	"name": "UIDD-FinTech",
+	"main": "server.js",
+	"config": {
+		"portiorender": 3000
+	},
+	"scripts": {
+		"build": "npm install",
+		"start": "node server.js",
+		"all": "npm run build && npm run start"
+	},
+	"licence": "GPL-3.0",
+	"repository": {
+		"type": "git",
+		"url": ""
+	},
+	"dependencies": {
+		"body-parser": "^1.15.2",
+		"express": "^4.6.1",
         "express-session": "^1.11.3",
         "ejs": "^2.5.5",
         "jsonfile": "^2.4.0",
         "request": "^2.7.0",
         "moment": "^2.17.1",
         "socket.io": "^1.4.5"
-    }
+	}
 }
