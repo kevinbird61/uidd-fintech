@@ -1,13 +1,15 @@
 # UIDD-FinTech
 
-> This project is developed for NCKU-EE course UIDD.
-> Developer: Yung-Sheng Lu (NCKU-CSIE)
-> Collaborator: 
-> Designer: Jenna Chen (NCKU-ID)
-> Copyrights &copy; 2017 NCKU-EE UIDD. All rights reserved.
+- This project is developed for NCKU-EE course UIDD.
+- Developer: 
+    - Yung-Sheng Lu (NCKU-CSIE)
+    - Kevin Cyu (NCKU-CSIE)
+- Collaborator: 
+    - Designer: Jenna Chen (NCKU-ID)
+- Copyrights &copy; 2017 NCKU-EE UIDD. All rights reserved.
+
 
 ## Scripts
-===
 
 ```shell
 # Build
@@ -19,7 +21,6 @@ $ npm run build && npm run start
 ```
 
 ## Dependencies
-===
 
 * [Node.js](http://nodejs.org/en/) - v6.10.0 LTS
 * [body-parser](http://github.com/expressjs/body-parser) - v1.15.2
@@ -36,11 +37,9 @@ $ npm run build && npm run start
 * (updated soon...)
 
 ## Records
-===
 
 * MAR 13, 2017 - Initial commit.
 
 ## TODO
-===
 
 * Visualization
