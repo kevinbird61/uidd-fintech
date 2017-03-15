@@ -1,10 +1,9 @@
 # UIDD-FinTech
 
-> This project is developed for NCKU-EE course UIDD.
-> Developer: Yung-Sheng Lu (NCKU-CSIE)
-> Collaborator: 
-> Designer: Jenna Chen (NCKU-ID)
-> Copyrights &copy; 2017 NCKU-EE UIDD. All rights reserved.
+* This project is developed for NCKU-EE course UIDD.
+* Developer: Yung-Sheng Lu (NCKU-CSIE)
+* Designer: Jenna Chen (NCKU-ID)
+* Copyrights &copy; 2017 NCKU-EE UIDD. All rights reserved.
 
 ## Scripts
 
@@ -32,14 +31,6 @@ $ npm run build && npm run start
 * [Bootstrap](http://getbootstrap.com/) - v3.3.7
 * [Font Awesome](http://fontawesome.io/) - v4.7.0
 * (updated soon...)
-
-## Records
-
-* MAR 13, 2017 - Initial commit.
-* MAR 15, 2017 - Modify all CSS and HTML
-    - Modify all CSS and HTML files.
-    - Modify responsive for web page.
-    - Modify modal for the language selection.
 
 ## TODO
 
