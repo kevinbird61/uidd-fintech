@@ -2,10 +2,11 @@
 var handler = require('./urlHandler');
 
 var mapping = [];
+// Header services
 mapping['/header_intro'] = handler.intro;
 mapping['/header_founders'] = handler.founders;
 mapping['/header_partnership'] = handler.partnership;
-
+// io services
 
 function url_handler(req,res){
     /* Map req.url to correspond function */

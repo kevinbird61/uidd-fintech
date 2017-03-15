@@ -2,7 +2,7 @@
 	"name": "UIDD-FinTech",
 	"main": "server.js",
 	"config": {
-		"portiorender": 3000
+		"port": 3000
 	},
 	"scripts": {
 		"build": "npm install",
@@ -22,6 +22,7 @@
         "jsonfile": "^2.4.0",
         "request": "^2.7.0",
         "moment": "^2.17.1",
-        "socket.io": "^1.4.5"
+        "socket.io": "^1.4.5",
+		"node-currency-swap": "1.0.6"
 	}
 }

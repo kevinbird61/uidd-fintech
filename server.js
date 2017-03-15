@@ -66,7 +66,7 @@ app.get('*', function(req,res){
 	router.url_handler(req,res);
 });
 
-server.listen(process.env.npm_package_config_portiorender, function() {
+server.listen(process.env.npm_package_config_port, function() {
 		var host = server.address().address;
 		var port = server.address().port;
 
