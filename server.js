@@ -9,6 +9,9 @@ const bodyParser = require('body-parser');
 const moment = require('moment');
 const jsonfs = require('jsonfile');
 
+// Get core
+const router = require('./server-services/core/router');
+
 /* Redirect views path */
 app.set('views', path.join(__dirname, 'client-services/views'));
 
@@ -57,6 +60,10 @@ app.get('/', function(req, res) {
 		index_content: lang_supp_content,
 		link: link_supp
 	});
+});
+
+app.get('*', function(req,res){
+	router.url_handler(req,res);
 });
 
 server.listen(process.env.npm_package_config_portiorender, function() {
