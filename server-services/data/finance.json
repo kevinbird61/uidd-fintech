@@ -4,5 +4,13 @@
     "HK": "HKD",
     "Japan": "JPY",
     "SouthKorea": "KRW",
-    "Thailand": "THB"
+    "Thailand": "THB",
+    "Malaysian": "MYR",
+    "Singapore": "SGD",
+    "Indonesian": "IDR",
+    "India": "IDR",
+    "England": "GBP",
+    "Euro": "EUR",
+    "Russian": "RUB",
+    "America" : "USD"
 }
