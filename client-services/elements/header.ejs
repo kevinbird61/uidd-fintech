@@ -1,0 +1,70 @@
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+	<!-- Setting navbar header (left) -->
+	<div class="navbar-header">
+		<button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#navbar" aria-expended="false" aria-controls="navbar">
+			<span class="sr-only">Toggle navigation</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</button>
+		<!-- Setting brand -->
+		<a class="navbar-brand" id="brand" href="#"><%= page_header.brand %></a>
+	</div> <!-- END navbar header (left) -->
+	<!-- Setting navbar header (right) -->
+	<div class="navbar-collapse collapse" id="navbar" aria-expanded="false">
+		<ul class="navbar-nav nav" id="nav-menu">
+			<li class="dropdown">
+				<a class="dropdown-toggle" data-toggle="dropdown" href="#"><%= page_header.about %><span class="caret"></span></a>
+				<ul class="dropdown-menu">
+					<li>
+						<a href="/intro"><%= page_header.about_intro %></a>
+					</li>
+					<li>
+						<a href="/founders"><%= page_header.about_founders %></a>
+					</li>
+					<li>
+						<a href="/partnership"><%= page_header.about_partnership %></a>
+					</li>
+				</ul>
+			</li>
+			<li>
+				<a href="/news"><%= page_header.news %></a>
+			</li>
+			<li>
+				<a href="/supp"><%= page_header.supp %></a>
+			</li>
+			<li>
+				<a href="/app"><%= page_header.app %></a>
+			</li>
+			<li>
+				<a href="/join"><%= page_header.join %></a>
+			</li>
+		</ul>
+		<ul class="navbar-nav nav" id="nav-acc">
+			<li id="acc-bar"></li>
+			<li>
+				<a id="acc-signup" href="#"><span class="glyphicon glyphicon-user"></span><%= page_header.signup %></a>
+			</li>
+			<li id="acc-login" >
+				<a href="#"><span class="glyphicon glyphicon-log-in"></span><%= page_header.login %></a>
+			</li>
+		</ul>
+	</div> <!-- END navbar header (right) -->
+</nav>
+
+<!-- Language modal-->
+<div class="modal fade" id="lang-modal" tabindex="-1" role="dialog" aria-labelledby="langModalLabel" aria-hidden="true">
+  	<div class="modal-dialog" role="document">
+    	<div class="modal-content">
+      		<div class="modal-header">
+        		<h5 class="modal-title" id="langModalLabel"><%= page_header.lang_choose %></h5>
+        		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      		</div>
+	      	<div class="modal-body">
+	      		<% for (var index in page_header.lang_detail) { %>
+				<a class="btn btn-lg btn-block btn-social" href="/?lang=<%= page_header.lang_detail[index].href %>"><i class="glyphicon glyphicon-ok-sign"></i><%= page_header.lang_detail[index].name %></a>
+				<% } %>
+			</div>
+    	</div>
+  	</div>
+</div>
