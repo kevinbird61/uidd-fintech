@@ -2,5 +2,8 @@
 	"facebook": "/facebook",
 	"linkedin": "/linkedin",
 	"twitter": "/twitter",
-	"youtube": "/youtube"
+	"youtube": "/youtube",
+	"intro": "/header_intro",
+	"founders": "/header_founders",
+	"partnership": "/header_partnership"
 }
