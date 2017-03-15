@@ -1,58 +1,68 @@
 const express = require('express');
 const app = express();
+
 const fs = require('fs');
 const url = require('url');
 const path = require('path');
+
 const bodyParser = require('body-parser');
 const moment = require('moment');
-const jsfs = require('jsonfile');
+const jsonfs = require('jsonfile');
 
 /* Redirect views path */
-app.set('views',path.join(__dirname,'client-services/views'));
-/* Setting static directory - image use */
+app.set('views', path.join(__dirname, 'client-services/views'));
+
+/* Setting static directory */
 app.use(express.static('client-services/css'));
-app.use(express.static('client-services/config'));
 app.use(express.static('client-services/fonts'));
 app.use(express.static('client-services/img'));
 app.use(express.static('client-services/js'));
 app.use(express.static('client-services/lib'));
-app.use(express.static('client-services/plugin'));
+app.use(express.static('client-services/config'));
+
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
-/* Setting view engine as ejs */
-app.set('view engine','ejs');
+
+/* Setting view engine as EJS file */
+app.set('view engine', 'ejs');
 
 const server = require('http').createServer(app);
 
-app.get("/",function(req,res){
-    var lang = "";
-    // Parsing the url , get the setting params
-    var params = url.parse(req.url , true);
-    if(params.query.lang == undefined){
-        lang = "zh_TW";
-    }
-    else{
-        lang = params.query.lang;
-    }
-    // Fetch link support
-    var link_support = jsfs.readFileSync(__dirname+'/client-services/config/link.json');
-    // Fetch language support (in header.ejs)
-    var lang_support_header = jsfs.readFileSync(__dirname+'/client-services/translation/'+lang+'/header.json');
-    // Fetch Language support (text support)
-    var lang_support_text = jsfs.readFileSync(__dirname+'/client-services/translation/'+lang+'/index_content.json');
+app.get('/', function(req, res) {
+	var lang = '';
 
-    console.log("[uidd-fintech] Index page start!");
-    res.render('index',{
-        title: "FIN-LINK, your best choice of fintech.",
-        page_header: lang_support_header,
-        index_content: lang_support_text,
-        link: link_support
-    });
+	// Parsing the URL
+	var params = url.parse(req.url, true);
+	if (params.query.lang == undefined) {
+		lang = 'en';
+	} else {
+		lang = params.query.lang;
+	}
+
+	// Fetch link support
+	var link_supp = jsonfs.readFileSync(__dirname + '/client-services/config/link.json');
+
+	// Fetch language suppout (header.ejs)
+	var lang_supp_header = jsonfs.readFileSync(__dirname + '/client-services/lang/' + lang + '/header.json');
+
+	// Fetch language support (content)
+	var lang_supp_content = jsonfs.readFileSync(__dirname + '/client-services/lang/' + lang + '/index_content.json');
+
+	// Log: Page start
+	console.log('[INFO] index page start.');
+
+	res.render('index', {
+		title: 'FIN-LINK, your best choice of FinTech.',
+		page_header: lang_supp_header,
+		index_content: lang_supp_content,
+		link: link_supp
+	});
 });
 
-server.listen(process.env.npm_package_config_portiorender, function(){
-    var host = server.address().address;
-    var port = server.address().port;
-    // logger.record('io.render',"[io.render] Example app listening at "+host+" : "+port);
-    console.log("[uidd-fintech] uidd-fintech server listening at "+host+" : "+port);
+server.listen(process.env.npm_package_config_portiorender, function() {
+		var host = server.address().address;
+		var port = server.address().port;
+
+		// Log: Server listening
+		console.log("[INFO] Server is listening at " + host + ": " + port);
 });

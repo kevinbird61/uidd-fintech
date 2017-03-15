@@ -1,36 +1,59 @@
 <html lang="en">
-    <head>
-        <% include ../elements/lib %>
-    </head>
-
-    <header>
-        <% include ../elements/header %>
-    </header>
-    <body>
-        <!-- Div background , can replace it by D3 implementation -->
-        <div class="div-bg" style="width:100vw ; height:100%">
-            <div class="container" style="z-index:2;">
-                <!-- set an empty blank div -->
-                <div class="first">
-                </div>
-            </div>
-            <div id="icon-frame" class="icon-frame" style="width: 30vw; height:40vh">
-                <a href="<%= link.fb %>"><img id="fb-icon" src="icon/fb.png" style="position:absolute; left: 100px;  width: 3vw; z-index:5;"></img></a>
-                <a href="<%= link.linkin %>"><img id="linkin-icon" src="icon/linkin.png" style="position:absolute; left: 120px;  width: 3vw; z-index:6;"></img></a>
-                <a href="<%= link.twitter %>"><img id="twitter-icon" src="icon/twitter.png" style="position:absolute; left: 140px;  width: 3vw; z-index:7;"></img></a>
-                <a href="<%= link.youtube %>"><img id="youtube-icon" src="icon/youtube.png" style="position:absolute; left: 160px;  width: 3vw; z-index:8;"></img></a>
-            </div>
-            <div class="main-frame" style="width: 70vw; height:40vh">
-                <h1 class="main-frame-title">  Bridging &nbsp; the &nbsp; World &emsp;
-                    <img src="HSBC.png" style="width:7vw"></img>
-                    <img src="Citibank-logo.png" style="width:7vw"></img>
-                </h1>
-                <iframe class="main-frame-video" style="width: 25vw; height:30vh" src="https://www.youtube.com/embed/CJfv6c0wu2M" frameborder="0" allowfullscreen></iframe>
-                <div class="main-frame-textarea" style="width: 25vw">
-                    <h4><%= index_content.main_frame_text %></h4>
-                </div>
-            </div>
-        </div>
-    </body>
-    <script type="text/javascript" src="index_icon_tween.js"></script>
+<head>
+	<!-- Include meta.ejs -->
+	<% include ../elements/meta %>
+	<!-- Include lib.ejs -->
+	<% include ../elements/lib %>
+</head>
+<body>
+	<header>
+		<!-- Include header.ejs -->
+		<% include ../elements/header %>
+	</header>
+	<!-- Background-d3.js -->
+	<div class="home-container" id="home">
+		<!-- Language select -->
+		<div class="lang-frame">
+			<a data-toggle="modal" data-target=".signin-modal"><span class="caret"></span><%= page_header.lang %></a>
+		</div> 
+		<!-- <div class="container"><div class="empty"></div></div> -->
+		<!-- icons-frame -->
+		<div class="icons-frame" id="icons-frame">
+			<!-- FIX: Font Awesome -->
+			<a href="<%= link.facebook %>">
+				<img id="fb-icon" src="icon/fb.png">
+			</a>
+			<a href="<%= link.linkedin %>">
+				<img id="linkin-icon" src="icon/linkin.png">
+			</a>
+			<a href="<%= link.twitter %>">
+				<img id="twitter-icon" src="icon/twitter.png">
+			</a>
+			<a href="<%= link.youtube %>">
+				<img id="youtube-icon" src="icon/youtube.png">
+			</a>
+		</div> <!-- END -->
+		<!-- main-frame -->
+		<div class="main-frame">
+			<div class="main-header">
+				<div class="title">
+					<p>Bridging &nbsp;the &nbsp;World</p>
+					<div class="main-titleline"></div>
+				</div>
+				<div class="main-icon">
+					<img id="hsbc-icon" src="HSBC.png">
+					<img id="citibank-icon" src="Citibank-logo.png">
+				</div>
+			</div>
+			<div class="main-body">
+				<iframe class="main-video" frameborder="0" src="https://www.youtube.com/embed/CJfv6c0wu2M" allowfullscreen>
+				</iframe>
+				<div class="main-text">
+					<p><%= index_content.home_frame_text %></p>
+				</div>
+			</div>
+		</div> <!-- END main-frame -->
+	</div>
+</body>
+<script type="text/javascript" src=""></script>
 </html>
