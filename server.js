@@ -8,6 +8,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const moment = require('moment');
 const jsonfs = require('jsonfile');
+const IO = require('socket.io');
 
 // Get core
 const router = require('./server-services/core/router');
@@ -22,6 +23,7 @@ app.use(express.static('client-services/fonts'));
 app.use(express.static('client-services/img'));
 app.use(express.static('client-services/js'));
 app.use(express.static('client-services/lib'));
+app.use(express.static('client-services/plugin'));
 app.use(express.static('client-services/config'));
 
 app.use(bodyParser.urlencoded({extended: false}));
@@ -31,6 +33,7 @@ app.use(bodyParser.json());
 app.set('view engine', 'ejs');
 
 const server = require('http').createServer(app);
+const io = new IO().listen(server);
 
 // Main page here
 app.get('/', function(req, res) {
@@ -67,6 +70,27 @@ app.get('/', function(req, res) {
 // Get other url
 app.get('*', function(req,res){
 	router.url_handler(req,res);
+});
+
+// Socket io here
+io.sockets.on('connection',function(socket){
+	socket.on('finance',function(data){
+		var country1 = data.country1,country2 = data.country2;
+		console.log("Country 1: " + data.country1 + "; Country 2:" + data.country2);
+		finance.getExchangeAsync(data.country1,data.country2,function(err,detail){
+			if(err == 0){
+				socket.emit('error','server finance error');
+			}
+			else{
+				var obj = {
+					c1: data.country1,
+					c2: data.country2,
+					rate : detail
+				}
+				socket.emit('exchange',obj);
+			}
+		});
+	});
 });
 
 server.listen(process.env.npm_package_config_port, function() {

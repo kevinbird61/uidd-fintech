@@ -6,6 +6,7 @@ var mapping = [];
 mapping['/header_intro'] = handler.intro;
 mapping['/header_founders'] = handler.founders;
 mapping['/header_partnership'] = handler.partnership;
+mapping['/finance'] = handler.finance;
 // io services
 
 function url_handler(req,res){

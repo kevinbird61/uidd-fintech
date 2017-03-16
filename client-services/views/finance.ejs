@@ -1,0 +1,58 @@
+<html lang="en">
+<head>
+	<!-- Include meta.ejs -->
+	<% include ../elements/meta %>
+	<!-- Include lib.ejs -->
+	<% include ../elements/lib %>
+</head>
+<body>
+	<header>
+	</header>
+    <div class="container">
+        <div class="jumbotron">
+            <table class="table">
+                <thead class="thead-inverse">
+                    <tr>
+                    <th>#</th>
+                    <th><%= col1 %></th>
+                    <th><%= col2 %></th>
+                    <th><%= col3 %></th>
+                    <th><%= col4 %></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for(var index in content.pair){ %>
+                        <tr>
+                        <th scope="row"><%= index %></th>
+                        <td><%= content.pair[index].c1 %></td>
+                        <td><%= content.pair[index].c2 %></td>
+                        <td id='<%= content.pair[index].c1 %>-<%= content.pair[index].c2 %>'>null</td>
+                        <td id='<%= content.pair[index].c1 %>-<%= content.pair[index].c2 %>-date'>null</td>
+                        <td><button type="btn" class="btn btn-success" value="更新" onclick="update('<%= content.pair[index].c1 %>','<%= content.pair[index].c2 %>')">匯率更新</button><td>
+                        </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="socket.io-1.4.5/socket.io-1.4.5.js"></script>
+    <script type="text/javascript">
+        /* For debugging , so won't pack into library */
+        const socket = io();
+        // Trigger here
+        function update(pair_1,pair_2){
+            // Emit message to server to request data
+            var country_obj = {
+                "country1": pair_1,
+                "country2": pair_2
+            }
+            socket.emit('finance',country_obj);
+        }
+        // Receive exchange rate
+        socket.on('exchange',function(data){
+            document.getElementById(data.c1+'-'+data.c2).innerHTML = data.rate[0].value;
+            document.getElementById(data.c1+'-'+data.c2+'-date').innerHTML = data.rate[0].date;
+        })
+    </script>
+</body>
+</html>
