@@ -11,6 +11,7 @@ const jsonfs = require('jsonfile');
 
 // Get core
 const router = require('./server-services/core/router');
+const finance = require('./server-services/core/exchange');
 
 /* Redirect views path */
 app.set('views', path.join(__dirname, 'client-services/views'));
@@ -31,6 +32,7 @@ app.set('view engine', 'ejs');
 
 const server = require('http').createServer(app);
 
+// Main page here
 app.get('/', function(req, res) {
 	var lang = '';
 
@@ -62,6 +64,7 @@ app.get('/', function(req, res) {
 	});
 });
 
+// Get other url
 app.get('*', function(req,res){
 	router.url_handler(req,res);
 });
