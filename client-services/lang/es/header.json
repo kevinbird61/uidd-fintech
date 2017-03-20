@@ -1,0 +1,27 @@
+{
+    "brand": "FIN-LINK",
+    "about": "Acerca de",
+    "about_intro": "¿Qué es FinTech?",
+    "about_founders": "Fundadores",
+    "about_partnership": "Asociación",
+    "news": "Noticias",
+    "supp": "Apoyo",
+    "app": "Aplicaciones",
+    "signup": "Regístrate",
+    "login": "Iniciar sesión",
+    "lang": "Idioma",
+    "lang_choose": "Idioma",
+    "lang_detail": [{
+        "name": "English",
+        "href": "en"
+    }, {
+        "name": "Español",
+        "href": "es"
+    }, {
+        "name": "繁體中文",
+        "href": "zh-TW"
+    }, {
+        "name": "Français",
+        "href": "fr"
+    }]
+}

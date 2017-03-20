@@ -14,11 +14,20 @@
 	<div class="home-container" id="home">
 		<!-- Language select -->
 		<div class="lang-frame">
-			<a data-toggle="modal" data-target="#lang-modal"><span class="caret"></span><%= page_header.lang %></a>
-		</div> 
+			<div class="frame-header">
+				<a data-toggle="modal" data-target="#lang-modal"><span class="fa fa-caret-down"></span><%= page_header.lang %></a>
+			</div>
+			<div class="frame-body">
+				<% for (var index in 
+				page_header.lang_detail) { %>
+       			<a class="btn btn-lg btn-primary" href="/?lang=<%= page_header.lang_detail[index].href %>"><%= page_header.lang_detail[index].name %></a>
+       			<% } %>
+       		</div>
+		</div>
 		<!-- <div class="container"><div class="empty"></div></div> -->
 		<!-- icons-frame -->
 		<div class="icons-frame" id="icons-frame">
+			<!--<i class="fa fa-facebook"></i>
 			<!-- FIX: Font Awesome -->
 			<a href="<%= link.facebook %>">
 				<img id="fb-icon" src="icon/fb.png">
@@ -49,7 +58,7 @@
 				<iframe class="main-video" frameborder="0" src="https://www.youtube.com/embed/CJfv6c0wu2M" allowfullscreen>
 				</iframe>
 				<div class="main-text">
-					<p><%= index_content.home_frame_text %></p>
+					<p class="hyphenate" lang="en"><%= index_content.home_frame_text %></p>
 				</div>
 			</div>
 		</div> <!-- END main-frame -->

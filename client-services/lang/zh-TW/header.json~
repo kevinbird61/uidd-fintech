@@ -12,16 +12,16 @@
     "lang": "語言",
     "lang_choose": "語言選擇",
     "lang_detail": [{
-        "name": "English",
+        "name": "英文",
         "href": "en"
     }, {
-        "name": "Español",
+        "name": "西班牙文",
         "href": "es"
-    }, {
+    },{
         "name": "繁體中文",
         "href": "zh-TW"
     }, {
-        "name": "Français",
+        "name": "法文",
         "href": "fr"
     }]
 }

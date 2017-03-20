@@ -15,13 +15,13 @@
         "name": "English",
         "href": "en"
     }, {
-        "name": "Español",
+        "name": "Spanish",
         "href": "es"
     }, {
-        "name": "繁體中文",
+        "name": "Traditional Chinese",
         "href": "zh-TW"
     }, {
-        "name": "Français",
+        "name": "French",
         "href": "fr"
     }]
 }

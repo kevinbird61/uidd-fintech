@@ -1,76 +1,166 @@
-var size_adapter = document.getElementById('icon-frame');
-var total_width = size_adapter.offsetWidth;
-var total_height = size_adapter.offsetHeight;
+var total_width = $('#icons-frame').offsetWidth;
+var total_height = $('#icons-frame').offsetHeight;
 
-var position,position2,position3,position4;
-var fb,linkin,twitter,youtube;
-var tween,tween2,tween3,tween4;
+/* Icons animation */
+var svg = d3.select('#icons-frame')
+    .append("svg")
+    .attr('width', '100%')
+    .attr('height', '100%');
 
-// fb-icon
-fb = document.getElementById('fb-icon');
-linkin = document.getElementById('linkin-icon');
-twitter = document.getElementById('twitter-icon');
-youtube = document.getElementById('youtube-icon');
+// Define all icons
+var icons_data = [
+    { 'x': 136, 'y': 410, 'id': 'facebook', 'label': '\uf09a' },
+    { 'x': 161.5, 'y': 475, 'id': 'youtube', 'label': '\uf167' },
+    { 'x': 198.7, 'y': 530, 'id': 'linkedin', 'label': '\uf0e1' },
+    { 'x': 248.5, 'y': 580, 'id': 'twitter', 'label': '\uf099' }
+];
 
-var easing_type = TWEEN.Easing.Exponential.Out;
+// Define all icons' path
+var icons_path = [
+    [
+        [136, 410],
+        [136, 410],
+        [136, 410],
+    ],
+    [
+        [136, 410],
+        [149.1, 449],
+        [161.6, 475]
+    ],
+    [
+        [161.6, 475],
+        [180.1, 508],
+        [198.7, 530]
+    ],
+    [
+        [198.7, 530],
+        [218.4, 553],
+        [248.5, 580]
+    ]
+];
 
-init();
-animate();
+// Define curved line path
+var path_data = [
+    [120, 340],
+    [136, 410],
+    [161.6, 475],
+    [198.7, 530],
+    [248.5, 580],
+    [310, 630]
+];
 
-function init(){
-    position = {x:fb.style.left, y:fb.style.top, rotation: 0};
-    tween = new TWEEN.Tween(position)
-            .to({x:position.x+total_width/4, y: position.y+total_height/4,rotation:0},3000)
-            .delay(0)
-            .easing(easing_type)
-            .onUpdate(update);
-    position2 = {x:linkin.style.left ,y:linkin.style.top,rotation:0}
-    tween2 = new TWEEN.Tween(position2)
-            .to({x:position2.x+2*total_width/4, y:position2.y+2*total_height/4,rotation:0},3000)
-            .delay(0)
-            .easing(easing_type)
-            .onUpdate(update2);
-    position3 = {x:twitter.style.left ,y:twitter.style.top ,rotation:0}
-    tween3 = new TWEEN.Tween(position3)
-            .to({x:position3.x+3*total_width/4, y:position3.y+3*total_height/4,rotation:0},3000)
-            .delay(0)
-            .easing(easing_type)
-            .onUpdate(update3);
-    position4 = {x:youtube.style.left, y:youtube.style.top,rotation:0}
-    tween4 = new TWEEN.Tween(position4)
-            .to({x:position4.x+4*total_width/4, y:position4.y+4*total_height/4,rotation:0},3000)
-            .delay(0)
-            .easing(easing_type)
-            .onUpdate(update4);
+var curve = d3.svg.line()
+    .x(function(d) {
+        return d[0];
+    })
+    .y(function(d) {
+        return d[1];
+    })
+    .tension(0)
+    .interpolate('basis');
 
-    tween.start();
-    tween2.start();
-    tween3.start();
-    tween4.start();
-}
+// Draw curved line in animation
+var curve_path = svg.selectAll('path')
+    .data([path_data])
+    .enter()
+    .append('path')
+    .attr('d', curve)
+    .attr('stroke', '#4298CC')
+    .attr('stroke-width', 2.25)
+    .attr('fill', 'none')
+    .attr('id', function(d, i) {
+        return 'path' + i;
+    })
+    .transition()
+    .duration(2000)
+    .attrTween('stroke-dasharray', function() {
+        var len = this.getTotalLength();
+        return function(t) {
+            return d3.interpolateString('0,' + len, len + ',0')(t);
+        };
+    });
 
-function animate( time ) {
-    requestAnimationFrame( animate );
-    TWEEN.update( time );
-}
-function update() {
-    fb.style.left = position.x + 'px';
-    fb.style.top = position.y + 'px';
-    //target.style.webkitTransform = 'rotate(' + Math.floor(position.rotation) + 'deg)';
-    //target.style.MozTransform = 'rotate(' + Math.floor(position.rotation) + 'deg)';
-}
 
-function update2(){
-    linkin.style.left = position2.x + 'px';
-    linkin.style.top = position2.y + 'px';
-}
+// Draw all icons
+var icon_group = svg.selectAll('g')
+    .data(icons_path)
+    .enter()
+    .append('g');
 
-function update3(){
-    twitter.style.left = position3.x + 'px';
-    twitter.style.top = position3.y + 'px';
-}
+var icon_path = icon_group
+    .append('path')
+    .attr('fill', 'none')
+    .attr('d', curve);
 
-function update4(){
-    youtube.style.left = position4.x + 'px';
-    youtube.style.top = position4.y + 'px';
+var icon = icon_group.selectAll('a')
+    .data([icons_data])
+    .enter()
+    .append('a')
+    .attr('class', 'icon')
+    .attr('id', function(d, i, j) {
+        return d[j].id;
+    });
+
+icon.append('circle')
+    .attr('id', function(d, i, j) {
+        return d[j].id;
+    })
+    .attr('fill', '#4298CC')
+    .attr('r', 27)
+    .attr('transform', function(d, i, j) {
+        return 'translate(' + d[j].x + ', ' + d[j].y + ')';
+    })
+    .style('opacity', 0)
+    .transition()
+        .duration(500)
+        .delay(function(d, i, j) {
+            return j * 1000;
+        })
+    .transition()
+        .ease('linear')
+        .duration(500)
+        .delay(function(d, i, j) {
+            if (this.id == 'facebook') {
+                return j * 500 + 1000;
+            }
+            return j * 500 + 1500;
+        })
+        .attrTween('transform', createPathTween)
+    .style('opacity', 1);
+
+
+icon.append('text')
+    .attr('id', function(d, i, j) {
+        return d[j].id;
+    })
+    .attr('transform', function(d, i, j) {
+        return 'translate(' + d[j].x + ',' + d[j].y + ')';
+    })
+    .attr('text-anchor', 'middle')
+    .attr('dominant-baseline', 'central')
+    .attr('font-family', 'FontAwesome')
+    .attr('font-size', '2.2rem')
+    .attr('fill', 'white')
+    .text(function(d, i, j) {
+        return d[j].label;
+    })
+    .style('opacity', 0)
+        .transition()
+        .duration(1000)
+        .delay(function(d, i, j) {
+            if (this.id == 'facebook') {
+                return j * 500 + 1000;
+            }
+            return j * 500 + 1500;
+        })
+        .style('opacity', 1);
+
+
+function createPathTween(d, i, j) {
+    var path = this.parentNode.parentNode.getElementsByTagName('path')[0];
+    var l = path.getTotalLength();
+    return function(t) {
+        var p = path.getPointAtLength(t * l);
+        return 'translate(' + p.x + ',' + p.y + ')';
+    };
 }
