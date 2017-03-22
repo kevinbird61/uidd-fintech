@@ -8,7 +8,7 @@ $(function() {
         );
     };
 
-    $('.lang-frame .frame-header').click(function(event) {
-        $('.lang-frame .frame-body').slideFadeToggle();
+    $('#lang .lang-header').click(function(event) {
+        $('#lang .lang-body').slideFadeToggle();
     });
 });

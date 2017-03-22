@@ -1,7 +1,11 @@
+* {
+    box-sizing: border-box;
+}
+
 html,
 body {
     font-size: 100%;
-    height: 100vh;
+    height: 100%;
     width: 100%;
 }
 
@@ -218,10 +222,104 @@ body {
     width: inherit;
 }
 
+/* icons-frame */
+
+#home #icons {
+	float: left;
+    height: 85vh;
+    position: absolute;
+    left: 10px;
+    width: 20vw;
+}
+
+#home #icons::after {
+	clear: both;
+    content: '';
+}
+
+/* main-frame */
+
+#home #main {
+    height: 85vh;
+    margin-left: 20%;
+    position: relative;
+    width: 70vw;
+}
+
+#home #main .main-header {
+    position: absolute;
+    top: 51%;
+    width: inherit;
+}
+
+#home #main .main-body {
+    position: absolute;
+    padding-left: 7.5%;
+    top: 67%;
+    width: inherit;
+}
+
+#main .main-header .title {
+    width: 64vw;
+}
+
+#main .main-header .title p {
+    font-family: kalinga;
+    font-size: 3.5em;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    text-align: center;
+}
+
+#main .main-header .main-titleline {
+    background-color: transparent;
+    background-image: radial-gradient(circle, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+    background-image: -webkit-radial-gradient(circle, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+    background-image: -moz-radial-gradient(circle, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+    background-image: -ms-radial-gradient(circle, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+    background-image: -o-radial-gradient(circle, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+    bottom: -15%;
+    height: 0.35em;
+    position: absolute;
+    width: inherit;
+}
+
+#main .main-header .main-icon {
+    position: absolute;
+    top: -23%;
+    left: 68%;
+    width: 25%;
+}
+
+#main .main-header .main-icon img {
+    margin-right: 5.5%;
+    width: 7vw;
+}
+
+#main .main-body .main-video {
+    height: 26.5vh;
+    width: 22.5vw;
+}
+
+#main .main-body .main-text {
+    position: absolute;
+    top: 0%;
+    left: 42.5%;
+}
+
+#main .main-body .main-text p {
+    font-family: helvetica_narrow_48w;
+    font-size: 1.6em;
+    /* hyphens */
+    hyphens: auto;
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    text-align: justify;
+}
 
 /* lang-frame */
-
-#home .lang-frame {
+#home #lang {
     background: transparent;
     position: absolute;
     padding: 0;
@@ -231,18 +329,18 @@ body {
     z-index: 10;
 }
 
-#home .lang-frame .frame-header {
+#lang .lang-header {
     margin: 4% 0 3% 0;
     position: relative;
     text-align: right;
     width: 105%;
 }
 
-#home .lang-frame .frame-header span {
+#lang .lang-header span {
     padding: 6% 7% 0 0;
 }
 
-#home .lang-frame .frame-header a {
+#lang .lang-header a {
     color: #413A38;
     display: block;
     font-style: calibri;
@@ -251,7 +349,7 @@ body {
     widows: inherit;
 }
 
-#home .lang-frame .frame-header a:hover {
+#lang .lang-header a:hover {
     cursor: pointer;
     text-decoration: none;
     /* text-shadow */
@@ -266,7 +364,7 @@ body {
     -o-transition: all 0.2s ease-in;
 }
 
-#home .lang-frame .frame-body {
+#lang .lang-body {
     background-color: transparent;
     border: 3px solid #000000;
     border-color: #413A38;
@@ -274,12 +372,11 @@ body {
     display: none;
     margin-left: 20%;
     padding: 2% 0 2% 0;
-    position: relative;
-    right: 0;
+    position: absolute;
     width: 85%;
 }
 
-#home .lang-frame .frame-body a {
+#lang .lang-body a {
     background-color: transparent;
     border: none;
     color: #413A38;
@@ -288,132 +385,6 @@ body {
     padding: 0 14% 0 14%;
     position: relative;
     text-align: left;
-}
-
-/* icons-frame */
-
-#home .icons-frame {
-	float: left;
-    height: 85vh;
-    position: absolute;
-    left: 10px;
-    width: 20vw;
-}
-
-#home .icons-frame::after {
-	clear: both;
-    content: '';
-}
-
-#home .icons-frame img {
-	display: none;
-    position: absolute;
-    width: 3vw;
-}
-
-#home .icons-frame #fb-icon {
-    z-index: 5;
-}
-
-#home .icons-frames #linkin-icon {
-    left: 120px;
-    z-index: 6;
-}
-
-#home .icons-frame #twitter-icon {
-    left: 140px;
-    z-index: 7;
-}
-
-#home .icons-frame #youtube-icon {
-    left: 160px;
-    z-index: 8;
-}
-
-#home .icons-frame img:hover {
-    transform: scale(1.5, 1.5);
-    transition: all 0.1s ease-in-out;
-}
-
-/* main-frame */
-
-#home .main-frame {
-    height: 85vh;
-    margin-left: 20%;
-    position: relative;
-    width: 70vw;
-}
-
-#home .main-frame .main-header {
-    position: absolute;
-    top: 51%;
-    width: inherit;
-}
-
-#home .main-frame .main-body {
-    position: absolute;
-    padding-left: 7.5%;
-    top: 67%;
-    width: inherit;
-}
-
-.main-frame .main-header .title {
-    width: 64vw;
-}
-
-.main-frame .main-header .title p {
-    font-family: kalinga;
-    font-size: 3.5em;
-    font-weight: 400;
-    letter-spacing: 0.05em;
-    text-align: center;
-}
-
-.main-frame .main-header .main-titleline {
-    background-color: transparent;
-    background-image: radial-gradient(circle, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
-    background-image: -webkit-radial-gradient(circle, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
-    background-image: -moz-radial-gradient(circle, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
-    background-image: -ms-radial-gradient(circle, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
-    background-image: -o-radial-gradient(circle, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
-    bottom: -15%;
-    height: 0.35em;
-    position: absolute;
-    width: inherit;
-}
-
-.main-frame .main-header .main-icon {
-    position: absolute;
-    top: -23%;
-    left: 68%;
-    width: 25%;
-}
-
-.main-frame .main-header .main-icon img {
-    margin-right: 5.5%;
-    width: 7vw;
-}
-
-.main-frame .main-body .main-video {
-    height: 26.5vh;
-    width: 22.5vw;
-}
-
-.main-frame .main-body .main-text {
-    position: absolute;
-    top: 0%;
-    left: 42.5%;
-}
-
-.main-frame .main-body .main-text p {
-    font-family: helvetica_narrow_48w;
-    font-size: 1.6em;
-    /* hyphens */
-    hyphens: auto;
-    -webkit-hyphens: auto;
-    -moz-hyphens: auto;
-    -ms-hyphens: auto;
-    text-align: justify;
 }
 
 /** modal **/

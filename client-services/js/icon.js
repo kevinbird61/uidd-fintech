@@ -2,7 +2,7 @@ var total_width = $('#icons-frame').offsetWidth;
 var total_height = $('#icons-frame').offsetHeight;
 
 /* Icons animation */
-var svg = d3.select('#icons-frame')
+var svg = d3.select('#icons')
     .append("svg")
     .attr('width', '100%')
     .attr('height', '100%');

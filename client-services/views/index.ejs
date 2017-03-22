@@ -10,58 +10,45 @@
 		<!-- Include header.ejs -->
 		<% include ../elements/header %>
 	</header>
-	<!-- Background-d3.js -->
-	<div class="home-container" id="home">
-		<!-- Language select -->
-		<div class="lang-frame">
-			<div class="frame-header">
-				<a data-toggle="modal" data-target="#lang-modal"><span class="fa fa-caret-down"></span><%= page_header.lang %></a>
+	<div class="container" id="home">
+		<div class="row">
+			<!-- language -->
+			<div class="col-lg-2 col-lg-offset-10" id="lang">
+				<div class="lang-header">
+					<a data-toggle="modal" data-target="#lang-modal"><span class="fa fa-caret-down"></span><%= page_header.lang %></a>
+				</div>
+				<div class="lang-body">
+					<% for (var index in 
+					page_header.lang_detail) { %>
+	       			<a class="btn btn-lg btn-primary" href="/?lang=<%= page_header.lang_detail[index].href %>"><%= page_header.lang_detail[index].name %></a>
+	       			<% } %>
+	       		</div>
 			</div>
-			<div class="frame-body">
-				<% for (var index in 
-				page_header.lang_detail) { %>
-       			<a class="btn btn-lg btn-primary" href="/?lang=<%= page_header.lang_detail[index].href %>"><%= page_header.lang_detail[index].name %></a>
-       			<% } %>
-       		</div>
 		</div>
-		<!-- <div class="container"><div class="empty"></div></div> -->
-		<!-- icons-frame -->
-		<div class="icons-frame" id="icons-frame">
-			<!--<i class="fa fa-facebook"></i>
-			<!-- FIX: Font Awesome -->
-			<a href="<%= link.facebook %>">
-				<img id="fb-icon" src="icon/fb.png">
-			</a>
-			<a href="<%= link.linkedin %>">
-				<img id="linkin-icon" src="icon/linkin.png">
-			</a>
-			<a href="<%= link.twitter %>">
-				<img id="twitter-icon" src="icon/twitter.png">
-			</a>
-			<a href="<%= link.youtube %>">
-				<img id="youtube-icon" src="icon/youtube.png">
-			</a>
-		</div> <!-- END -->
-		<!-- main-frame -->
-		<div class="main-frame">
-			<div class="main-header">
-				<div class="title">
-					<p>Bridging &nbsp;the &nbsp;World</p>
-					<div class="main-titleline"></div>
+		<div class="row" id="main-frame">
+			<!-- icons -->
+			<div class="col-lg-3" id="icons"></div>
+			<!-- main -->
+			<div class="col-lg-8 col-lg-offset-3" id="main">
+				<div class="main-header">
+					<div class="title">
+						<p>Bridging &nbsp;the &nbsp;World</p>
+						<div class="main-titleline"></div>
+					</div>
+					<div class="main-icon">
+						<img id="hsbc-icon" src="HSBC.png">
+						<img id="citibank-icon" src="Citibank-logo.png">
+					</div>
 				</div>
-				<div class="main-icon">
-					<img id="hsbc-icon" src="HSBC.png">
-					<img id="citibank-icon" src="Citibank-logo.png">
+				<div class="main-body">
+					<iframe class="main-video" frameborder="0" src="https://www.youtube.com/embed/CJfv6c0wu2M" allowfullscreen>
+					</iframe>
+					<div class="main-text">
+						<p class="hyphenate" lang="en"><%= index_content.home_frame_text %></p>
+					</div>
 				</div>
 			</div>
-			<div class="main-body">
-				<iframe class="main-video" frameborder="0" src="https://www.youtube.com/embed/CJfv6c0wu2M" allowfullscreen>
-				</iframe>
-				<div class="main-text">
-					<p class="hyphenate" lang="en"><%= index_content.home_frame_text %></p>
-				</div>
-			</div>
-		</div> <!-- END main-frame -->
+		</div>
 	</div>
 </body>
 <!-- Animate the icons in the main page -->
